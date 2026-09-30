@@ -1,15 +1,26 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-import SignupForm from '@/components/SignupForm';
+import LoginForm from '@/components/LoginForm';
 import l from '@/lib/en';
+import { getCurrentUser } from '@/lib/session';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: l.auth.signupMetadataTitle,
-  description: l.auth.signupMetadataDescription,
+  title: l.auth.loginMetadataTitle,
+  description: l.auth.loginMetadataDescription,
 };
 
-export default function SignupPage() {
+export default async function SignInPage() {
+  const user = await getCurrentUser();
+
+  // An existing session skips the login form and continues to the directory.
+  if (user) {
+    redirect('/directory');
+  }
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">
       <section className="w-full max-w-md rounded-2xl border border-slate-700 bg-slate-900 p-6 shadow-sm sm:p-8">
@@ -21,22 +32,21 @@ export default function SignupPage() {
         </Link>
 
         <h1 className="text-3xl font-bold tracking-tight text-white">
-          {l.auth.signupTitle}
+          {l.auth.loginTitle}
         </h1>
         <p className="mb-8 mt-3 leading-7 text-slate-300">
-          {l.auth.signupDescription}
+          {l.auth.loginDescription}
         </p>
 
-        <SignupForm />
+        <LoginForm />
 
-        {/* Existing users can move directly to the login flow. */}
         <p className="mt-6 text-center text-sm text-slate-400">
-          {l.auth.haveAccount}{' '}
+          {l.auth.noAccount}{' '}
           <Link
-            href="/sign-in"
+            href="/sign-up"
             className="font-semibold text-blue-400 hover:text-blue-300 focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
           >
-            {l.auth.signInLink}
+            {l.auth.createAccountLink}
           </Link>
         </p>
       </section>
