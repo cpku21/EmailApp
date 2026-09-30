@@ -25,3 +25,20 @@ export const signupFormSchema = signupSchema
 export const verificationTokenSchema = z.object({
   token: z.string().regex(/^[a-f0-9]{64}$/i),
 });
+
+export const forgotPasswordSchema = z.object({
+  email: z.string().trim().toLowerCase().max(254).email(),
+});
+
+export const resetPasswordSchema = z.object({
+  token: z.string().regex(/^[a-f0-9]{64}$/i),
+  password: passwordSchema,
+});
+
+export const resetPasswordFormSchema = resetPasswordSchema
+  .extend({
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ['confirmPassword'],
+  });

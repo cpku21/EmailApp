@@ -84,6 +84,7 @@ const l = {
     signingOut: 'Signing out...',
     noAccount: 'New to EmailApp?',
     createAccountLink: 'Create an account',
+    forgotPasswordLink: 'Forgot password?',
     haveAccount: 'Already have an account?',
     signInLink: 'Sign in',
     invalidCredentials: 'Invalid email or password.',
@@ -113,6 +114,32 @@ const l = {
     verificationAlreadyComplete: 'Your email address is already verified.',
     continueToSignIn: 'Continue to sign in',
     backHome: 'Back to home',
+    forgotPasswordMetadataTitle: 'Forgot password | EmailApp',
+    forgotPasswordMetadataDescription:
+      'Request a secure password reset link for your EmailApp account.',
+    forgotPasswordTitle: 'Forgot your password?',
+    forgotPasswordDescription:
+      'Enter your email and we will send a reset link if an account exists.',
+    sendResetLink: 'Send reset link',
+    sendingResetLink: 'Sending reset link...',
+    invalidResetEmail: 'Enter a valid email address.',
+    passwordResetRequestSuccess:
+      'If an account exists for this email, a reset link has been sent.',
+    passwordResetRequestFailed:
+      'We could not process your request. Please try again.',
+    resetPasswordMetadataTitle: 'Reset password | EmailApp',
+    resetPasswordMetadataDescription:
+      'Choose a new password for your EmailApp account.',
+    resetPasswordTitle: 'Choose a new password',
+    resetPasswordDescription:
+      'Your new password must contain at least 8 characters.',
+    newPassword: 'New password',
+    confirmNewPassword: 'Confirm new password',
+    resetPasswordButton: 'Reset password',
+    resettingPassword: 'Resetting password...',
+    invalidPasswordResetLink: 'This password reset link is invalid or expired.',
+    passwordResetSuccess: 'Your password has been reset. You can now sign in.',
+    passwordResetFailed: 'We could not reset your password. Please try again.',
   },
 } as const;
 
