@@ -58,12 +58,14 @@ export async function POST(request: Request) {
     const passwordHash = await hashPassword(password);
     const { rawToken, tokenHash, expiresAt } = generateEmailVerificationToken();
 
+    // The initial send timestamp also starts the resend cooldown.
     const user = await db.user.create({
       data: {
         email,
         passwordHash,
         emailVerificationTokenHash: tokenHash,
         emailVerificationExpiresAt: expiresAt,
+        emailVerificationSentAt: new Date(),
       },
       select: { id: true },
     });

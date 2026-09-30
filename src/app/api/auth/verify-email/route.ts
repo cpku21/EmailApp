@@ -29,6 +29,7 @@ export async function POST(request: Request) {
   }
 
   try {
+    // A successful atomic update consumes the token and clears verification state.
     const verificationResult = await getDb().user.updateMany({
       where: {
         emailVerificationTokenHash: hashEmailVerificationToken(
@@ -41,6 +42,7 @@ export async function POST(request: Request) {
         emailVerifiedAt: new Date(),
         emailVerificationTokenHash: null,
         emailVerificationExpiresAt: null,
+        emailVerificationSentAt: null,
       },
     });
 
