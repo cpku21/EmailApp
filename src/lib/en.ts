@@ -90,6 +90,8 @@ const l = {
     loginFailed: 'We could not sign you in. Please try again.',
     logoutFailed: 'We could not sign you out. Please try again.',
     sessionFailed: 'We could not check your session. Please try again.',
+    authenticationRequired: 'Authentication required.',
+    emailVerificationRequired: 'Email verification required.',
     verifyMetadataTitle: 'Verify email | EmailApp',
     verifyMetadataDescription: 'Verify your EmailApp email address.',
     verifyTitle: 'Verify your email',
