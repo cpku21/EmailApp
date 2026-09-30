@@ -44,8 +44,8 @@ export default async function Home({ searchParams = {} }: HomePageProps) {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-950">
-      <header className="border-b border-slate-200 bg-white">
+    <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100">
+      <header className="border-b border-slate-800 bg-slate-950">
         <div className="mx-auto flex h-16 w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
           <span className="text-lg font-bold tracking-tight">
             {l.home.appName}
@@ -55,16 +55,16 @@ export default async function Home({ searchParams = {} }: HomePageProps) {
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <section className="mb-8 max-w-3xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-blue-700">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-blue-400">
             {l.home.eyebrow}
           </p>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
             {l.home.heroTitle}
-            <span className="mt-1 block text-blue-700">
+            <span className="mt-1 block text-blue-400">
               {l.home.heroHighlight}
             </span>
           </h1>
-          <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
+          <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
             {l.home.heroDescription}
           </p>
         </section>
@@ -76,13 +76,13 @@ export default async function Home({ searchParams = {} }: HomePageProps) {
 
         <div className="mt-8">
           {!filters.specialization ? (
-            <p className="rounded-2xl border border-blue-200 bg-blue-50 px-5 py-8 text-center text-slate-700">
+            <p className="rounded-2xl border border-blue-900 bg-blue-950/40 px-5 py-8 text-center text-blue-100">
               {l.home.selectSpecializationPrompt}
             </p>
           ) : loadFailed ? (
             <p
               role="alert"
-              className="rounded-2xl border border-red-200 bg-red-50 px-5 py-6 text-sm text-red-800"
+              className="rounded-2xl border border-red-900 bg-red-950/40 px-5 py-6 text-sm text-red-200"
             >
               {l.home.loadError}
             </p>
@@ -92,8 +92,8 @@ export default async function Home({ searchParams = {} }: HomePageProps) {
         </div>
       </main>
 
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto w-full max-w-7xl px-4 py-6 text-sm text-slate-600 sm:px-6 lg:px-8">
+      <footer className="border-t border-slate-800 bg-slate-950">
+        <div className="mx-auto w-full max-w-7xl px-4 py-6 text-sm text-slate-400 sm:px-6 lg:px-8">
           {l.home.footer}
         </div>
       </footer>
