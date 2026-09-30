@@ -26,12 +26,12 @@ export default function FilterForm({
   return (
     <form
       method="get"
-      className="grid gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto] lg:items-end lg:p-6"
+      className="grid gap-4 rounded-2xl border border-slate-700 bg-slate-900 p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto] lg:items-end lg:p-6"
     >
       <div className="min-w-0">
         <label
           htmlFor="specialization"
-          className="mb-2 block text-sm font-semibold text-slate-800"
+          className="mb-2 block text-sm font-semibold text-slate-200"
         >
           {l.filters.specialization}
         </label>
@@ -40,7 +40,7 @@ export default function FilterForm({
           name="specialization"
           required
           defaultValue={selectedSpecialization ?? ''}
-          className="h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-base text-slate-900 outline-none focus-visible:border-blue-600 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+          className="h-11 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 text-base text-slate-100 outline-none focus-visible:border-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
         >
           <option value="" disabled>
             {l.filters.chooseSpecialization}
@@ -56,7 +56,7 @@ export default function FilterForm({
       <div className="min-w-0">
         <label
           htmlFor="region"
-          className="mb-2 block text-sm font-semibold text-slate-800"
+          className="mb-2 block text-sm font-semibold text-slate-200"
         >
           {l.filters.region}
         </label>
@@ -64,7 +64,7 @@ export default function FilterForm({
           id="region"
           name="region"
           defaultValue={selectedRegion ?? ''}
-          className="h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-base text-slate-900 outline-none focus-visible:border-blue-600 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+          className="h-11 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 text-base text-slate-100 outline-none focus-visible:border-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
         >
           <option value="">{l.filters.anyRegion}</option>
           <option value="EU">{l.filters.eu}</option>
@@ -81,7 +81,7 @@ export default function FilterForm({
 
       <button
         type="submit"
-        className="h-11 w-full rounded-lg bg-blue-700 px-6 text-sm font-semibold text-white hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 sm:col-span-2 lg:col-span-1 lg:w-auto"
+        className="h-11 w-full rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 sm:col-span-2 lg:col-span-1 lg:w-auto"
       >
         {l.filters.submit}
       </button>

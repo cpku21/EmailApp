@@ -9,7 +9,7 @@ type CompanyListProps = {
 export default function CompanyList({ companies }: CompanyListProps) {
   if (companies.length === 0) {
     return (
-      <p className="rounded-2xl border border-slate-200 bg-white px-5 py-10 text-center text-slate-600">
+      <p className="rounded-2xl border border-slate-700 bg-slate-900 px-5 py-10 text-center text-slate-300">
         {l.companies.empty}
       </p>
     );
