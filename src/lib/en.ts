@@ -1,3 +1,4 @@
+// Centralized English copy keeps UI and API messages consistent.
 const l = {
   metadata: {
     title: 'EmailApp | Remote Programming Companies',
@@ -49,6 +50,10 @@ const l = {
     signupSuccess:
       'Account created. Check your inbox to verify your email address.',
     signupFailed: 'We could not create your account. Please try again.',
+    invalidCredentials: 'Invalid email or password.',
+    loginFailed: 'We could not sign you in. Please try again.',
+    logoutFailed: 'We could not sign you out. Please try again.',
+    sessionFailed: 'We could not check your session. Please try again.',
     verifyMetadataTitle: 'Verify email | EmailApp',
     verifyMetadataDescription: 'Verify your EmailApp email address.',
     verifyTitle: 'Verify your email',
