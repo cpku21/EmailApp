@@ -1,17 +1,17 @@
 import { NextResponse } from 'next/server';
 
-import { connectToDatabase } from '@/lib/mongodb';
+import { getDb } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    await connectToDatabase();
+    await getDb().$queryRaw`SELECT 1`;
 
     return NextResponse.json({ ok: true });
   } catch (error) {
     // Keep connection details on the server instead of exposing them to clients.
-    console.error('MongoDB health check failed:', error);
+    console.error('PostgreSQL health check failed:', error);
 
     return NextResponse.json({ ok: false }, { status: 500 });
   }

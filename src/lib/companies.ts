@@ -1,48 +1,34 @@
-import { connectToDatabase } from '@/lib/mongodb';
-import CompanyModel from '@/lib/models/Company';
+import { getDb } from '@/lib/db';
 import type { Specialization } from '@/lib/specializations';
 
 export type CompanyListItem = {
   name: string;
   email: string;
   country: string;
-  specializations: Specialization[];
-  note?: string;
+  specializations: string[];
+  note: string | null;
 };
 
 export async function findCompanies(
   specialization?: Specialization,
   countryCodes?: string[],
 ): Promise<CompanyListItem[]> {
-  await connectToDatabase();
-
-  const filter: {
-    isActive: true;
-    specializations?: Specialization;
-    country?: { $in: string[] };
-  } = {
-    isActive: true,
-  };
-
-  if (specialization) {
-    filter.specializations = specialization;
-  }
-
-  if (countryCodes) {
-    filter.country = { $in: countryCodes };
-  }
-
-  return CompanyModel.find(filter)
-    .select({
-      _id: 0,
-      name: 1,
-      email: 1,
-      country: 1,
-      specializations: 1,
-      note: 1,
-    })
-    .sort({ name: 1 })
-    .limit(200)
-    .lean<CompanyListItem[]>()
-    .exec();
+  return getDb().company.findMany({
+    where: {
+      isActive: true,
+      specializations: specialization ? { has: specialization } : undefined,
+      country: countryCodes ? { in: countryCodes } : undefined,
+    },
+    select: {
+      name: true,
+      email: true,
+      country: true,
+      specializations: true,
+      note: true,
+    },
+    orderBy: {
+      name: 'asc',
+    },
+    take: 200,
+  });
 }
