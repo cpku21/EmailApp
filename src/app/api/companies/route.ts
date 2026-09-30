@@ -1,22 +1,13 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
 
 import { findCompanies } from '@/lib/companies';
-import { SPECIALIZATIONS } from '@/lib/specializations';
+import { companyQuerySchema } from '@/lib/companyQuery';
 import { resolveRegion } from '@/utils/regions';
 
 export const dynamic = 'force-dynamic';
 
-const querySchema = z.object({
-  specialization: z.enum(SPECIALIZATIONS).optional(),
-  region: z
-    .string()
-    .regex(/^(EU|EUROPE|[A-Z]{2})$/i)
-    .optional(),
-});
-
 export async function GET(request: NextRequest) {
-  const result = querySchema.safeParse({
+  const result = companyQuerySchema.safeParse({
     specialization:
       request.nextUrl.searchParams.get('specialization') ?? undefined,
     region: request.nextUrl.searchParams.get('region') ?? undefined,

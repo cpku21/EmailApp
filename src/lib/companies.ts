@@ -2,10 +2,18 @@ import { connectToDatabase } from '@/lib/mongodb';
 import CompanyModel from '@/lib/models/Company';
 import type { Specialization } from '@/lib/specializations';
 
+export type CompanyListItem = {
+  name: string;
+  email: string;
+  country: string;
+  specializations: Specialization[];
+  note?: string;
+};
+
 export async function findCompanies(
   specialization?: Specialization,
   countryCodes?: string[],
-) {
+): Promise<CompanyListItem[]> {
   await connectToDatabase();
 
   const filter: {
@@ -35,6 +43,6 @@ export async function findCompanies(
     })
     .sort({ name: 1 })
     .limit(200)
-    .lean()
+    .lean<CompanyListItem[]>()
     .exec();
 }
