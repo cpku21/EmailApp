@@ -28,4 +28,15 @@ model User {
   emailVerificationExpiresAt DateTime?
   createdAt                  DateTime  @default(now())
   updatedAt                  DateTime  @updatedAt
+  sessions                   Session[]
+}
+
+// Sessions store token hashes so a database leak does not expose active cookies.
+model Session {
+  id        Int      @id @default(autoincrement())
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

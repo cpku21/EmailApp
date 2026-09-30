@@ -11,6 +11,9 @@ export const signupSchema = z.object({
   password: passwordSchema,
 });
 
+// Login applies the same email normalization and bcrypt-safe password limits as signup.
+export const loginSchema = signupSchema;
+
 export const signupFormSchema = signupSchema
   .extend({
     confirmPassword: z.string(),
