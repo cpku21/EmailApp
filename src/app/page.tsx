@@ -33,12 +33,14 @@ export default async function Home({ searchParams = {} }: HomePageProps) {
   let companies: CompanyListItem[] = [];
   let loadFailed = false;
 
-  try {
-    companies = await findCompanies(filters.specialization, countryCodes);
-  } catch (error) {
-    // Visitors see a safe message while the detailed error stays on the server.
-    console.error('Failed to load companies on the home page:', error);
-    loadFailed = true;
+  if (filters.specialization) {
+    try {
+      companies = await findCompanies(filters.specialization, countryCodes);
+    } catch (error) {
+      // Visitors see a safe message while the detailed error stays on the server.
+      console.error('Failed to load companies on the home page:', error);
+      loadFailed = true;
+    }
   }
 
   return (
@@ -73,7 +75,11 @@ export default async function Home({ searchParams = {} }: HomePageProps) {
         />
 
         <div className="mt-8">
-          {loadFailed ? (
+          {!filters.specialization ? (
+            <p className="rounded-2xl border border-blue-200 bg-blue-50 px-5 py-8 text-center text-slate-700">
+              {l.home.selectSpecializationPrompt}
+            </p>
+          ) : loadFailed ? (
             <p
               role="alert"
               className="rounded-2xl border border-red-200 bg-red-50 px-5 py-6 text-sm text-red-800"

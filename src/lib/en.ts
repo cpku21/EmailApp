@@ -11,18 +11,20 @@ const l = {
     heroHighlight: 'Get up to 200 company emails for direct applications.',
     heroDescription:
       'Filter remote programming employers hiring across Europe and start reaching out in minutes.',
+    selectSpecializationPrompt:
+      'Choose a specialization to see matching companies and their contact emails.',
     loadError: 'We could not load companies right now. Please try again later.',
     footer: 'EmailApp — remote programming companies hiring across Europe.',
   },
   filters: {
     specialization: 'Specialization',
-    allSpecializations: 'All specializations',
+    chooseSpecialization: 'Choose a specialization',
     region: 'Region',
     anyRegion: 'Any region',
     eu: 'EU',
     europe: 'Europe',
     countries: 'Countries',
-    submit: 'Show companies',
+    submit: 'Show company contacts',
   },
   companies: {
     sectionLabel: 'Companies',

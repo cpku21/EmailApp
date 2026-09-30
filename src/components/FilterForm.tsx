@@ -38,10 +38,13 @@ export default function FilterForm({
         <select
           id="specialization"
           name="specialization"
+          required
           defaultValue={selectedSpecialization ?? ''}
           className="h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-base text-slate-900 outline-none focus-visible:border-blue-600 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
         >
-          <option value="">{l.filters.allSpecializations}</option>
+          <option value="" disabled>
+            {l.filters.chooseSpecialization}
+          </option>
           {SPECIALIZATIONS.map((specialization) => (
             <option key={specialization} value={specialization}>
               {SPECIALIZATION_LABELS[specialization]}
