@@ -5,7 +5,26 @@ const l = {
     description:
       'Discover remote programming and IT companies that hire across Europe.',
   },
-  home: {
+  landing: {
+    appName: 'EmailApp',
+    accountNavigation: 'Account navigation',
+    signIn: 'Sign in',
+    createAccount: 'Create account',
+    eyebrow: 'Remote opportunities, without the endless search',
+    title: 'Find companies that match your skills.',
+    highlight: 'Apply directly.',
+    description:
+      'Choose your specialization and region to access a focused list of remote employers and company contacts across Europe.',
+    primaryAction: 'Create a free account',
+    secondaryAction: 'I already have an account',
+    proPlan: 'Pro plan',
+    comingSoon: 'Coming soon',
+    proPrice: '€5',
+    perMonth: '/ month',
+    proDescription: 'Access up to 2,500 company contacts for direct outreach.',
+    footer: 'EmailApp — find remote programming companies across Europe.',
+  },
+  directory: {
     appName: 'EmailApp',
     eyebrow: 'Remote companies. Direct contacts.',
     heroTitle: 'Choose your specialty.',
@@ -15,6 +34,10 @@ const l = {
     selectSpecializationPrompt:
       'Choose a specialization to see matching companies and their contact emails.',
     loadError: 'We could not load companies right now. Please try again later.',
+    verificationRequiredLabel: 'Email verification required',
+    verificationRequiredTitle: 'Verify your email to open the directory',
+    verificationRequiredDescription:
+      'Use the verification link in your inbox, then return here to access company contacts.',
     footer: 'EmailApp — remote programming companies hiring across Europe.',
   },
   filters: {
@@ -50,6 +73,19 @@ const l = {
     signupSuccess:
       'Account created. Check your inbox to verify your email address.',
     signupFailed: 'We could not create your account. Please try again.',
+    loginMetadataTitle: 'Sign in | EmailApp',
+    loginMetadataDescription:
+      'Sign in to access the EmailApp company directory.',
+    loginTitle: 'Welcome back',
+    loginDescription: 'Sign in to access remote company contacts.',
+    signIn: 'Sign in',
+    signingIn: 'Signing in...',
+    signOut: 'Sign out',
+    signingOut: 'Signing out...',
+    noAccount: 'New to EmailApp?',
+    createAccountLink: 'Create an account',
+    haveAccount: 'Already have an account?',
+    signInLink: 'Sign in',
     invalidCredentials: 'Invalid email or password.',
     loginFailed: 'We could not sign you in. Please try again.',
     logoutFailed: 'We could not sign you out. Please try again.',
@@ -64,6 +100,7 @@ const l = {
     verificationSuccess: 'Your email address has been verified.',
     invalidVerificationLink: 'This verification link is invalid or expired.',
     verificationFailed: 'We could not verify your email. Please try again.',
+    continueToSignIn: 'Continue to sign in',
     backHome: 'Back to home',
   },
 } as const;

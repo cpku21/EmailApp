@@ -83,11 +83,12 @@ export default function VerifyEmailForm({ token }: VerifyEmailFormProps) {
         </p>
       ) : null}
 
+      {/* Successful verification continues directly into the login flow. */}
       <Link
-        href="/"
+        href={isSuccess ? '/sign-in' : '/'}
         className="block text-center text-sm font-semibold text-blue-400 underline decoration-blue-700 underline-offset-4 hover:text-blue-300 focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
       >
-        {l.auth.backHome}
+        {isSuccess ? l.auth.continueToSignIn : l.auth.backHome}
       </Link>
     </div>
   );
