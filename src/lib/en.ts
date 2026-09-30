@@ -26,6 +26,7 @@ const l = {
   },
   directory: {
     appName: 'EmailApp',
+    accountLink: 'Account',
     eyebrow: 'Remote companies. Direct contacts.',
     heroTitle: 'Choose your specialty.',
     heroHighlight: 'Get up to 200 company emails for direct applications.',
@@ -39,6 +40,22 @@ const l = {
     verificationRequiredDescription:
       'Use the verification link in your inbox, then return here to access company contacts.',
     footer: 'EmailApp — remote programming companies hiring across Europe.',
+  },
+  account: {
+    appName: 'EmailApp',
+    metadataTitle: 'Account | EmailApp',
+    metadataDescription: 'View your EmailApp account details and plan.',
+    directoryLink: 'Directory',
+    eyebrow: 'Account',
+    title: 'Your account',
+    description: 'View your account status and current plan.',
+    emailLabel: 'Email',
+    verificationLabel: 'Email status',
+    verified: 'Verified',
+    notVerified: 'Not verified',
+    planLabel: 'Current plan',
+    freePlan: 'Free',
+    footer: 'EmailApp — your account overview.',
   },
   filters: {
     specialization: 'Specialization',

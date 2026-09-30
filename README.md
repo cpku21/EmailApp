@@ -41,6 +41,7 @@ The project is developed incrementally with a focus on:
 - Email and password registration
 - Email verification and verification-email resend
 - Login, logout, and database-backed sessions
+- Account overview with email, verification status, and current plan
 - Protected company contact details for verified users
 - Secure password reset by email
 

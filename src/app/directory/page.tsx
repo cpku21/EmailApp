@@ -40,7 +40,15 @@ export default async function DirectoryPage({
             >
               {l.directory.appName}
             </Link>
-            <LogoutButton />
+            <div className="flex items-center gap-3">
+              <Link
+                href="/account"
+                className="inline-flex h-11 items-center justify-center rounded-lg px-3 text-sm font-semibold text-slate-300 hover:bg-slate-900 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+              >
+                {l.directory.accountLink}
+              </Link>
+              <LogoutButton />
+            </div>
           </div>
         </header>
         <main className="mx-auto flex w-full max-w-xl flex-1 items-center px-4 py-12 sm:px-6">
@@ -100,9 +108,12 @@ export default async function DirectoryPage({
             {l.directory.appName}
           </Link>
           <div className="flex min-w-0 items-center gap-3">
-            <span className="max-w-48 truncate text-sm text-slate-400 sm:max-w-72">
-              {user.email}
-            </span>
+            <Link
+              href="/account"
+              className="inline-flex h-11 items-center justify-center rounded-lg px-3 text-sm font-semibold text-slate-300 hover:bg-slate-900 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+            >
+              {l.directory.accountLink}
+            </Link>
             <LogoutButton />
           </div>
         </div>
