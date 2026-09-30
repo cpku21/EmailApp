@@ -1,57 +1,57 @@
 'use client';
 
-import Link from 'next/link';
 import { type FormEvent, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
-import { loginSchema } from '@/lib/authValidation';
+import { forgotPasswordSchema } from '@/lib/authValidation';
 import l from '@/lib/en';
 
-type LoginResponse = {
+type ForgotPasswordResponse = {
   ok: boolean;
+  message?: string;
   error?: string;
 };
 
-export default function LoginForm() {
-  const router = useRouter();
+export default function ForgotPasswordForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setMessage(null);
     setError(null);
 
-    const formData = new FormData(event.currentTarget);
-    const result = loginSchema.safeParse({
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const result = forgotPasswordSchema.safeParse({
       email: formData.get('email'),
-      password: formData.get('password'),
     });
 
     if (!result.success) {
-      setError(l.auth.invalidCredentials);
+      setError(l.auth.invalidResetEmail);
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('/api/auth/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(result.data),
       });
-      const data = (await response.json()) as LoginResponse;
+      const data = (await response.json()) as ForgotPasswordResponse;
 
       if (!response.ok) {
-        setError(data.error ?? l.auth.loginFailed);
+        setError(data.error ?? l.auth.passwordResetRequestFailed);
         return;
       }
 
-      // Refreshing after navigation lets Server Components read the new cookie.
-      router.replace('/directory');
-      router.refresh();
+      // The same message is shown whether or not the account exists.
+      setMessage(data.message ?? l.auth.passwordResetRequestSuccess);
+      form.reset();
     } catch {
-      setError(l.auth.loginFailed);
+      setError(l.auth.passwordResetRequestFailed);
     } finally {
       setIsSubmitting(false);
     }
@@ -76,40 +76,22 @@ export default function LoginForm() {
         />
       </div>
 
-      <div>
-        <label
-          htmlFor="password"
-          className="mb-2 block text-sm font-semibold text-slate-200"
-        >
-          {l.auth.password}
-        </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          autoComplete="current-password"
-          minLength={8}
-          maxLength={72}
-          required
-          className="h-11 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 text-base text-slate-100 outline-none focus-visible:border-blue-400 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
-        />
-        <div className="mt-2 text-right">
-          <Link
-            href="/forgot-password"
-            className="text-sm font-semibold text-blue-400 hover:text-blue-300 focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-          >
-            {l.auth.forgotPasswordLink}
-          </Link>
-        </div>
-      </div>
-
       <button
         type="submit"
         disabled={isSubmitting}
         className="h-11 w-full rounded-lg bg-blue-600 px-6 text-sm font-semibold text-white hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {isSubmitting ? l.auth.signingIn : l.auth.signIn}
+        {isSubmitting ? l.auth.sendingResetLink : l.auth.sendResetLink}
       </button>
+
+      {message ? (
+        <p
+          role="status"
+          className="rounded-lg border border-emerald-900 bg-emerald-950/40 px-4 py-3 text-sm text-emerald-200"
+        >
+          {message}
+        </p>
+      ) : null}
 
       {error ? (
         <p

@@ -49,3 +49,34 @@ export async function sendEmailVerification(
     `,
   });
 }
+
+export async function sendPasswordResetEmail(
+  email: string,
+  token: string,
+): Promise<void> {
+  const env = getEmailEnv();
+  const resetUrl = new URL('/reset-password', env.APP_URL);
+  resetUrl.searchParams.set('token', token);
+  const link = resetUrl.toString();
+
+  // Reset links are short-lived and delivered only to the account email address.
+  await getEmailTransporter(env).sendMail({
+    from: env.EMAIL_FROM,
+    to: email,
+    subject: 'Reset your EmailApp password',
+    text: [
+      'Reset your EmailApp password by opening this link:',
+      link,
+      '',
+      'This link expires in 1 hour.',
+      'If you did not request a password reset, you can ignore this email.',
+    ].join('\n'),
+    html: `
+      <h1>Reset your EmailApp password</h1>
+      <p>Use the link below to choose a new password.</p>
+      <p><a href="${link}">Reset password</a></p>
+      <p>This link expires in 1 hour.</p>
+      <p>If you did not request a password reset, you can ignore this email.</p>
+    `,
+  });
+}
