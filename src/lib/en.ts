@@ -30,6 +30,37 @@ const l = {
     sectionLabel: 'Companies',
     empty: 'No companies match these filters',
   },
+  auth: {
+    appName: 'EmailApp',
+    signupMetadataTitle: 'Create account | EmailApp',
+    signupMetadataDescription:
+      'Create an EmailApp account and verify your email address.',
+    signupTitle: 'Create your account',
+    signupDescription: 'Verify your email to access company contact addresses.',
+    email: 'Email',
+    password: 'Password',
+    confirmPassword: 'Confirm password',
+    passwordHint: 'Use at least 8 characters.',
+    createAccount: 'Create account',
+    creatingAccount: 'Creating account...',
+    invalidSignupDetails: 'Enter a valid email and a secure password.',
+    passwordsDoNotMatch: 'Passwords do not match.',
+    accountExists: 'An account with this email already exists.',
+    signupSuccess:
+      'Account created. Check your inbox to verify your email address.',
+    signupFailed: 'We could not create your account. Please try again.',
+    verifyMetadataTitle: 'Verify email | EmailApp',
+    verifyMetadataDescription: 'Verify your EmailApp email address.',
+    verifyTitle: 'Verify your email',
+    verifyDescription:
+      'Confirm your email address before accessing company contacts.',
+    verifyButton: 'Verify email address',
+    verifying: 'Verifying...',
+    verificationSuccess: 'Your email address has been verified.',
+    invalidVerificationLink: 'This verification link is invalid or expired.',
+    verificationFailed: 'We could not verify your email. Please try again.',
+    backHome: 'Back to home',
+  },
 } as const;
 
 export default l;
