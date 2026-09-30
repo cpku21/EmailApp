@@ -2,6 +2,9 @@ import { createHash, randomBytes } from 'node:crypto';
 
 const EMAIL_VERIFICATION_EXPIRATION_MS = 24 * 60 * 60 * 1000;
 
+// The cooldown limits repeated verification emails without shortening token validity.
+export const EMAIL_VERIFICATION_RESEND_COOLDOWN_MS = 60 * 1000;
+
 export function generateEmailVerificationToken(): {
   rawToken: string;
   tokenHash: string;

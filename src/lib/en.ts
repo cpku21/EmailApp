@@ -102,6 +102,15 @@ const l = {
     verificationSuccess: 'Your email address has been verified.',
     invalidVerificationLink: 'This verification link is invalid or expired.',
     verificationFailed: 'We could not verify your email. Please try again.',
+    resendVerification: 'Send a new verification email',
+    resendingVerification: 'Sending verification email...',
+    verificationResendSuccess:
+      'A new verification link has been sent to your email address.',
+    verificationResendCooldown:
+      'Please wait a minute before requesting another verification email.',
+    verificationResendFailed:
+      'We could not send a new verification email. Please try again.',
+    verificationAlreadyComplete: 'Your email address is already verified.',
     continueToSignIn: 'Continue to sign in',
     backHome: 'Back to home',
   },

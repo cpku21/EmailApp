@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import CompanyList from '@/components/CompanyList';
 import FilterForm from '@/components/FilterForm';
 import LogoutButton from '@/components/LogoutButton';
+import ResendVerificationButton from '@/components/ResendVerificationButton';
 import { findCompanies, type CompanyListItem } from '@/lib/companies';
 import { companyQuerySchema } from '@/lib/companyQuery';
 import l from '@/lib/en';
@@ -53,6 +54,7 @@ export default async function DirectoryPage({
             <p className="mt-4 leading-7 text-slate-300">
               {l.directory.verificationRequiredDescription}
             </p>
+            <ResendVerificationButton />
           </section>
         </main>
       </div>
