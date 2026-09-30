@@ -35,6 +35,7 @@ export default function FilterForm({
         >
           {l.filters.specialization}
         </label>
+
         <select
           id="specialization"
           name="specialization"
