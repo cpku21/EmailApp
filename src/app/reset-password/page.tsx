@@ -10,13 +10,15 @@ export const metadata: Metadata = {
 };
 
 type ResetPasswordPageProps = {
-  searchParams: { token?: string };
+  searchParams: Promise<{ token?: string | string[] }>;
 };
 
 // Token validation remains in the API; this page only forwards the URL value.
-export default function ResetPasswordPage({
+export default async function ResetPasswordPage({
   searchParams,
 }: ResetPasswordPageProps) {
+  const { token } = await searchParams;
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">
       <section className="w-full max-w-md rounded-2xl border border-slate-700 bg-slate-900 p-6 shadow-sm sm:p-8">
@@ -34,7 +36,9 @@ export default function ResetPasswordPage({
           {l.auth.resetPasswordDescription}
         </p>
 
-        <ResetPasswordForm token={searchParams.token} />
+        <ResetPasswordForm
+          token={typeof token === 'string' ? token : undefined}
+        />
       </section>
     </main>
   );
