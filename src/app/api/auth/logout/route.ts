@@ -11,7 +11,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 export async function POST() {
-  const token = cookies().get(SESSION_COOKIE_NAME)?.value;
+  const token = (await cookies()).get(SESSION_COOKIE_NAME)?.value;
 
   try {
     if (token) {

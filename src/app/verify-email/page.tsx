@@ -10,16 +10,20 @@ export const metadata: Metadata = {
 };
 
 type VerifyEmailPageProps = {
-  searchParams?: {
+  searchParams?: Promise<{
     token?: string | string[];
-  };
+  }>;
 };
 
-export default function VerifyEmailPage({
-  searchParams = {},
+export default async function VerifyEmailPage({
+  searchParams,
 }: VerifyEmailPageProps) {
+  // Next.js provides page search parameters asynchronously.
+  const resolvedSearchParams = searchParams ? await searchParams : {};
   const token =
-    typeof searchParams.token === 'string' ? searchParams.token : undefined;
+    typeof resolvedSearchParams.token === 'string'
+      ? resolvedSearchParams.token
+      : undefined;
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4 py-10">

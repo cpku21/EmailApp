@@ -22,8 +22,8 @@ The project is developed incrementally with a focus on:
 
 ## Tech Stack
 
-- **Next.js 14** with the App Router
-- **React 18**
+- **Next.js 16** with the App Router
+- **React 19**
 - **TypeScript** with strict mode
 - **Tailwind CSS**
 - **PostgreSQL**

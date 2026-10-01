@@ -51,7 +51,7 @@ export async function deleteSession(token: string): Promise<void> {
 }
 
 export async function getCurrentUser(): Promise<CurrentUser | null> {
-  const token = cookies().get(SESSION_COOKIE_NAME)?.value;
+  const token = (await cookies()).get(SESSION_COOKIE_NAME)?.value;
 
   if (!token) {
     return null;

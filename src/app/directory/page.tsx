@@ -14,15 +14,16 @@ import { resolveRegion } from '@/utils/regions';
 export const dynamic = 'force-dynamic';
 
 type DirectoryPageProps = {
-  searchParams?: {
+  searchParams?: Promise<{
     specialization?: string | string[];
     region?: string | string[];
-  };
+  }>;
 };
 
 export default async function DirectoryPage({
-  searchParams = {},
+  searchParams,
 }: DirectoryPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : {};
   const user = await getCurrentUser();
 
   if (!user) {
@@ -71,11 +72,13 @@ export default async function DirectoryPage({
 
   const result = companyQuerySchema.safeParse({
     specialization:
-      typeof searchParams.specialization === 'string'
-        ? searchParams.specialization
+      typeof resolvedSearchParams.specialization === 'string'
+        ? resolvedSearchParams.specialization
         : undefined,
     region:
-      typeof searchParams.region === 'string' ? searchParams.region : undefined,
+      typeof resolvedSearchParams.region === 'string'
+        ? resolvedSearchParams.region
+        : undefined,
   });
   const filters = result.success
     ? result.data
