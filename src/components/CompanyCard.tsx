@@ -1,4 +1,5 @@
 import type { CompanyListItem } from '@/lib/companies';
+import l from '@/lib/en';
 import {
   SPECIALIZATION_LABELS,
   type Specialization,
@@ -11,6 +12,9 @@ type CompanyCardProps = {
 export default function CompanyCard({ company }: CompanyCardProps) {
   const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
   const countryName = countryNames.of(company.country) ?? company.country;
+  const hiringCountryNames = company.hiringCountries.map(
+    (country) => countryNames.of(country) ?? country,
+  );
 
   return (
     <article className="flex h-full min-w-0 flex-col rounded-2xl border border-slate-700 bg-slate-900 p-5 shadow-sm">
@@ -18,7 +22,14 @@ export default function CompanyCard({ company }: CompanyCardProps) {
         <h2 className="break-words text-xl font-bold text-white">
           {company.name}
         </h2>
-        <p className="mt-1 text-sm text-slate-400">{countryName}</p>
+        <p className="mt-1 text-sm text-slate-400">
+          {l.companies.headquarters}: {countryName}
+        </p>
+        {hiringCountryNames.length > 0 ? (
+          <p className="mt-1 text-sm text-slate-300">
+            {l.companies.hiringCoverage}: {hiringCountryNames.join(', ')}
+          </p>
+        ) : null}
       </div>
 
       <div className="mb-4 flex flex-wrap gap-2">

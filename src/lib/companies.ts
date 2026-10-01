@@ -5,6 +5,7 @@ export type CompanyListItem = {
   name: string;
   email: string;
   country: string;
+  hiringCountries: string[];
   specializations: string[];
   note: string | null;
 };
@@ -17,12 +18,14 @@ export async function findCompanies(
     where: {
       isActive: true,
       specializations: specialization ? { has: specialization } : undefined,
-      country: countryCodes ? { in: countryCodes } : undefined,
+      // Region filters describe candidate eligibility, not company headquarters.
+      hiringCountries: countryCodes ? { hasSome: countryCodes } : undefined,
     },
     select: {
       name: true,
       email: true,
       country: true,
+      hiringCountries: true,
       specializations: true,
       note: true,
     },

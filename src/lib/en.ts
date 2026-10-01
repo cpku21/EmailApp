@@ -70,6 +70,8 @@ const l = {
   companies: {
     sectionLabel: 'Companies',
     empty: 'No companies match these filters',
+    headquarters: 'Headquarters',
+    hiringCoverage: 'Accepts candidates from',
   },
   auth: {
     appName: 'EmailApp',
